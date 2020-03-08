@@ -4,7 +4,6 @@
 function getRelevantMessages()
 {
   Logger.log("Getting Schedule Emails to be processed");
-  var filter = "Provide your email search conditions here";
   var threads = GmailApp.search(filter,0,6);
   var messages=[];
   threads.forEach(function(thread)
