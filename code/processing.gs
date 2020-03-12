@@ -11,7 +11,7 @@ function Processing() {
 function processMessages(messages) {
   
   const ss = openSpreadSheet();
-  if(ss = -1) {
+  if(ss == -1) {
     Logger.log("Unable to open Spreadsheet\nExiting Script\n");
     return ss;
   }
@@ -41,6 +41,8 @@ function processMessages(messages) {
       addUnitsToSchedule(schedule, lessons);
 
       tallyAndAssignUnits(schedule);
+      
+      findFirstUnit(schedule);
       
       Logger.log("Saving data for " + schedule.month + " " + schedule.date + ", " + schedule.year);
       saveDataToSheet(ss, schedule);
