@@ -14,14 +14,15 @@ function lookupLocation(location){
 }
 
 // Create an options object to pass to createEvent
-// this will add a ddescription and location information
+// this will add a description and location information
 function createDetails(unit){
 
   details = {};
-  details.description = unit.type + "\n";
+  details.description = unit.type;
   if((unit.comment) &&
      (unit.type !== "Travel")){
-    details.description += unit.comment + "\n";
+    var descAmmendment = "\n" + unit.comment + "\n";
+    details.description += descAmmendment;
   }
   if(unit.location) {
     details.location = lookupLocation(unit.location);
@@ -33,13 +34,16 @@ function createDetails(unit){
 function addUnitToCalendar(calendar, date, month, year, unit) {
  
   if((unit.type === "Vacation") ||
-     ((unit.type === "Blocked") && (!unit.comment.includes("Bonus")))) {
+     ((unit.type === "Blocked") && (!unit.comment.includes("onus")))) {
     } else {
       var details = createDetails(unit);
       var event = calendar.createEvent(makeEventTitle(unit),
-        setDateObject(date, month, year, unit.startTime),
-        setDateObject(date, month, year, unit.endTime),
-        details);
+      setDateObject(date, month, year, unit.startTime),
+      setDateObject(date, month, year, unit.endTime),
+                    details);
+      if(unit.isFirst() && (unit.location !== baseLC)) {
+      event.addPopupReminder(600); // This needs to be caovulated to get a more suitable time.
+      }
         Logger.log('Event ID: ' + event.getId());
     }
 }
@@ -57,52 +61,33 @@ function openCalendar() {
   
   if (calendar == null) {
     Logger.log("Unable to find BerlitzWork Calendar");
-    return 0;
+    return -1;
   } else {
     return calendar;
   }
 }
 
-// Loop throgh all scheduses provided / Batch
-function addSchedulesToCalendar(mySchedules) {
-  
-  // Gets the public calendar named "BerlitzWork" using its ID.
-  const calendar = CalendarApp.getCalendarById(calendarID);
-  
-  if (calendar == null) {
-    Logger.log("Unable to find BerlitzWork Calendar");
-    return undefined;
-  }
-
-  var i = 0;
-  while(i < mySchedules.length) {
-    deleteExistingEvents(calendar, mySchedules[i]);
-    addUnitsToCalendar(calendar, mySchedules[i])
-    i++
-  }
-}
-
 // Loop through all units for the given schedule
 // call addUnitToCalendar for each unit
-function addUnitsToCalendar(calendar, mySchedule) {
+function addUnitsToCalendar(calendar, schedule) {
 
-  deleteExistingEvents(calendar, mySchedule);
+  deleteExistingEvents(calendar, schedule);
   
   var i = 0;
-  while(i < mySchedule.units.length) {
-    addUnitToCalendar(calendar, mySchedule.date, mySchedule.month,
-                        mySchedule.year, mySchedule.units[i]);
+  while(i < schedule.units.length) {
+    addUnitToCalendar(calendar, schedule.date, schedule.month,
+                        schedule.year, schedule.units[i]);
     i++;  
   }
 }
 
 // To avoid duplicate calendar entries when the schedule has been resent.
 // Delete existing entrise if they exist.
-function deleteExistingEvents(calendar, mySchedule){
+function deleteExistingEvents(calendar, schedule){
   
-  var events = calendar.getEventsForDay(setDateObject(mySchedule.date, mySchedule.month, mySchedule.year,"00:00"));
+  var events = calendar.getEventsForDay(setDateObject(schedule.date, schedule.month, schedule.year,"00:00"));
   if (events.length > 0) {
-    Logger.log("Deleting all events for " + mySchedule.date + " the " + mySchedule.month + ", " + mySchedule.year);
+    Logger.log("Deleting all events for " + schedule.date + " the " + schedule.month + ", " + schedule.year);
     for (var i in events) {
       events[i].deleteEvent();
     }
