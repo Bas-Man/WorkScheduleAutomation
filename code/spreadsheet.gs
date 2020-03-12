@@ -24,38 +24,12 @@ function saveDataToSheet(ss, schedule) {
   SpreadsheetApp.flush();
 }
 
-function saveDataToSheetBatch(ss, schedules) {
-  
-  var i = 0;
-  while(i < schedules.length) {
-    var schedule = schedules[i];
-    saveDataToSheet(ss, schedule);
-    i++;
-  }
-}
-
-function updateSpreadsheet(ss, schedules) {
-  
-  Logger.log("Starting to update spreadsheet");
-  if(schedules) {
-    saveDataToSheetBatch(ss,schedules);
-  } else {
-    Logger.log("No schedules to work with. No work to be done");
-    return;
-  }
-  if(ss) {
-    Logger.log("Schedule open for writing");
-  } else {
-    Logger.log("Schedule it not open. Not updating data");
-    return;
-  }
-}
-
 function openSpreadSheet() {
   Logger.log("Opening Spreadsheet");
   var spreadsheet = SpreadsheetApp.openById(spreadSheetID);
   if(!spreadsheet) {
     Logger.log("Failed to open spreadsheet");
+    return -1;
   } else {
     Logger.log("Opened spreadsheet " + spreadsheet.getName());
   }
@@ -96,25 +70,6 @@ function getColumnIndex(months, month, date) {
   }
   var columnNum = months[keys[index + adjustColumnIndex(date)]]
   return columnNum;
-}
-
-// Simply get month/columm key/value pairs from Google Drive and 
-// parse it back into a javascript object for us
-// ** NO LONGER USED **//
-function loadMonthsFromFile() {
-  
-  var files = DriveApp.getFilesByName("months.json");
-  
-  while (files.hasNext()) {
-    var file = files.next();
-    var jsonFile = file.getAs('application/json');
-  }
-  
-  var dataStr = jsonFile.getDataAsString();
-  var months = JSON.parse(dataStr);
-  
-  return months;
-  
 }
 
 // This function will check if the column for the current month
