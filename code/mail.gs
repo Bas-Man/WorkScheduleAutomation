@@ -4,12 +4,16 @@
 function getRelevantMessages()
 {
   Logger.log("Getting Schedule Emails to be processed");
-  var filter = "Provide your email search conditions here";
-  var threads = GmailApp.search(filter,0,6);
+  var threads = GmailApp.search(filter);
   var messages=[];
   threads.forEach(function(thread)
                   {
-                    messages.push(thread.getMessages()[0]);
+                    var count = thread.getMessageCount();
+                    if(count > 1) {
+                      messages.push(thread.getMessages()[count - 1]);
+                    } else {
+                      messages.push(thread.getMessages()[0]);
+                    }
                   });
   Logger.log("Found " + messages.length + " messages");
   return messages;
