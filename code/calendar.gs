@@ -24,6 +24,11 @@ function createDetails(unit){
     var descAmmendment = "\n" + unit.comment + "\n";
     details.description += descAmmendment;
   }
+  console.log("unit.zoom: "+ unit.zoom)
+  
+  if(unit.zoom) {
+    details.description += "\nThis is a Zoom lesson\n";
+  }
   if(unit.location) {
     details.location = lookupLocation(unit.location);
   }
@@ -42,7 +47,7 @@ function addUnitToCalendar(calendar, date, month, year, unit) {
       setDateObject(date, month, year, unit.endTime),
                     details);
       if(unit.isFirst() && (unit.location !== baseLC)) {
-      event.addPopupReminder(600); // This needs to be caovulated to get a more suitable time.
+      event.addPopupReminder(120); // This needs to be coded to get a more suitable time.
       }
         Logger.log('Event ID: ' + event.getId());
     }
@@ -94,3 +99,7 @@ function deleteExistingEvents(calendar, schedule){
   }  
 }
 
+function addReminderYesNo(unit) {
+  
+  
+}
