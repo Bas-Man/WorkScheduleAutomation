@@ -100,8 +100,14 @@ function matchLessons(text) {
     } else {
       unit.comment = '';
     }
+    if(match.groups.zoom) {
+      unit.zoom = true;
+    }
     units.push(unit);
   }
   Logger.log("Completed matchLessons");
   return units;
 }
+
+
+
