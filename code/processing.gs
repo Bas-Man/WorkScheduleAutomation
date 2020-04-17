@@ -1,17 +1,26 @@
 
-function Processing() {
+function NightlyProcessing() {
   
   var status = 0;
   Logger.log("Starting Processing of Schedule Emails");
   const messages = getRelevantMessages();
   Logger.log("Retrieved relevant messages");
   status = processMessages(messages);
+  Logger.log("Processing Completed.");
 }
 
 function processMessages(messages) {
   
   const ss = openSpreadSheet();
+  if(ss == -1) {
+    Logger.log("Unable to open Spreadsheet\nExiting Script\n");
+    return ss;
+  }
   const cal = openCalendar();
+  if(cal == -1) {
+    Logger.log("Unable to open Calendar\nExiting Script\n");
+    return cal;
+  }
   
   // process oldest message to newest
   var message = messages.length;
@@ -25,16 +34,16 @@ function processMessages(messages) {
       continue; // Everything is ok. But no messages to process
     } else {
       var schedule = newSchedule(subject);
-      var paidVacation = matchPaidVacation(body);
-      addUnitsToSchedule(schedule, paidVacation);
     
-      var trvMethBlk = matchTravelMethodBlock(body);   
+      var trvMethBlk = matchTravelBlock(body);
       addUnitsToSchedule(schedule, trvMethBlk)
     
       var lessons = matchLessons(body)
       addUnitsToSchedule(schedule, lessons);
 
       tallyAndAssignUnits(schedule);
+      
+      findFirstUnit(schedule);
       
       Logger.log("Saving data for " + schedule.month + " " + schedule.date + ", " + schedule.year);
       saveDataToSheet(ss, schedule);
