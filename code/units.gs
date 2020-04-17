@@ -1,7 +1,11 @@
+function isStandardLesson(lesson_type) {
+    return basic_lessons.includes(lesson_type);
+}
 
 function createDefaultUnit() {
 
   var unit = {};
+  unit.zoom = false;
   unit.first = false;
   unit.isFirst = function() {
     return this.first;
@@ -21,10 +25,7 @@ function tallyAndAssignUnits(schedule) {
   Logger.log("Starting the tally process");
   for (var i = 0; i < schedule.units.length; i++) {
     // These are normal classes
-    if((schedule.units[i].type === "Method") || 
-       (schedule.units[i].type === "Private") || 
-       (schedule.units[i].type === "OutService") ||
-       (schedule.units[i].type === "Office") ||
+    if(isStandardLesson(schedule.units[i].type) ||
        (schedule.units[i].type.startsWith("Group")) ||
        (schedule.units[i].type.startsWith("Placement"))) { 
          //Placements are never paid as bonus unless its a mistake
