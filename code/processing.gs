@@ -1,11 +1,12 @@
 
-function Processing() {
+function NightlyProcessing() {
   
   var status = 0;
   Logger.log("Starting Processing of Schedule Emails");
   const messages = getRelevantMessages();
   Logger.log("Retrieved relevant messages");
   status = processMessages(messages);
+  Logger.log("Processing Completed.");
 }
 
 function processMessages(messages) {
