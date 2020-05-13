@@ -1,8 +1,12 @@
 function isStandardLesson(lesson_type) {
+    // Check if the lesson is a standard lesson. check is the lesson_type is contained in the
+    //constant array defined in constants.js
+    // return a booleen
     return basic_lessons.includes(lesson_type);
 }
 
 function createDefaultUnit() {
+  // Create an default Unit with default values
 
   var unit = {};
   unit.zoom = false;
@@ -56,9 +60,13 @@ function tallyAndAssignUnits(schedule) {
 }
 
 function findFirstUnit(schedule) {
+  // The units in the schedule may not be in chronological order.
+  // So we need to search through the list and find the first unit for the day.
+  // Using Unix TimeStamps
 
   var i = 0;
-  var indexOfFirst = 0;
+  var indexOfFirst = 0; // Store the index of the current unit which is considered to be the
+                        // first unit of the day.
   if(schedule.units.length == 0)
     return;
   
@@ -67,6 +75,7 @@ function findFirstUnit(schedule) {
     if((i == 0) && (schedule.units[i].type !== "Blocked")) {
       schedule.units[i].first = true;
       indexOfFirst = i;
+      // Note the + before setDateObject this is not a typo. It's is a short cut do not change.
       schedule.units[i].timeStamp = +setDateObject(schedule.date, 
                                                     schedule.month, 
                                                     schedule.year, 
