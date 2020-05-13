@@ -56,4 +56,3 @@ function processMessages(messages) {
   // Everything went as planned.
   return 2;
 }
-

@@ -85,4 +85,3 @@ function findFirstUnit(schedule) {
   i++;
   }
 }
-
