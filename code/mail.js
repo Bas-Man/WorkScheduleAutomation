@@ -29,4 +29,3 @@ function labelMessageAsDone(message){
   label_obj.addToThread(message.getThread() );  
     
 }
-
