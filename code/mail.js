@@ -1,5 +1,5 @@
 
-// Mail and functions
+// Mail functions
 
 function getRelevantMessages()
 {
@@ -10,8 +10,10 @@ function getRelevantMessages()
                   {
                     var count = thread.getMessageCount();
                     if(count > 1) {
+                      // More than one message in the thread, get the last message in the thread
                       messages.push(thread.getMessages()[count - 1]);
                     } else {
+                      // Only one message, so get the first and only message
                       messages.push(thread.getMessages()[0]);
                     }
                   });
@@ -20,6 +22,7 @@ function getRelevantMessages()
 }
 
 function labelMessageAsDone(message){
+  // Add a label to the message thread so that it is not processed again.
   
   var label = 'ProcessedSchedule';
   var label_obj = GmailApp.getUserLabelByName(label);
@@ -29,4 +32,3 @@ function labelMessageAsDone(message){
   label_obj.addToThread(message.getThread() );  
     
 }
-

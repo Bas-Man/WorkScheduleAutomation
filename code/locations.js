@@ -31,4 +31,3 @@ const locations = {
   "Yokohama":"Berlitz Yokohama Language Center",
   "Yurakucho":"Berlitz Yurakucho Language Center"
 };
-

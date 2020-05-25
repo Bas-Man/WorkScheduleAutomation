@@ -1,11 +1,12 @@
 
-// create a valid Date object using information stired in Object myScheule
+// create a valid Date object using information stored in Object schedule
 function setDateObject(date, month, year, time) {
   return new Date(month + ' ' + date + ', ' + year + ' ' + time);
 }
 
 function lookupLocation(location){
-
+  // This function takes the short LC name and looks up the full name which is used in
+  // Google Maps and hopefully Apple Maps Allowing for calendar apps to provide map directions
   if(!locations[location]) 
     location = "";
   else
@@ -19,13 +20,16 @@ function createDetails(unit){
 
   details = {};
   details.description = unit.type;
+  // If there is a comment add this to description
   if((unit.comment) &&
      (unit.type !== "Travel")){
-    var descAmmendment = "\n" + unit.comment + "\n";
-    details.description += descAmmendment;
+     var descAmmendment = "\n" + unit.comment + "\n";
+     details.description += descAmmendment;
   }
-  console.log("unit.zoom: "+ unit.zoom)
+  // Log this if this is a zoom unit {True/False}
+  console.log("unit.zoom: " + unit.zoom)
   
+  // Append Zoom information if zoom is true
   if(unit.zoom) {
     details.description += "\nThis is a Zoom lesson\n";
   }
@@ -81,13 +85,13 @@ function addUnitsToCalendar(calendar, schedule) {
   var i = 0;
   while(i < schedule.units.length) {
     addUnitToCalendar(calendar, schedule.date, schedule.month,
-                        schedule.year, schedule.units[i]);
+                     schedule.year, schedule.units[i]);
     i++;  
   }
 }
 
 // To avoid duplicate calendar entries when the schedule has been resent.
-// Delete existing entrise if they exist.
+// Delete existing entries if they exist.
 function deleteExistingEvents(calendar, schedule){
   
   var events = calendar.getEventsForDay(setDateObject(schedule.date, schedule.month, schedule.year,"00:00"));
@@ -97,9 +101,4 @@ function deleteExistingEvents(calendar, schedule){
       events[i].deleteEvent();
     }
   }  
-}
-
-function addReminderYesNo(unit) {
-  
-  
 }
