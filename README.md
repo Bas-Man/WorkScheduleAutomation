@@ -30,3 +30,4 @@ The ID can be found in the spreadsheet's url located between d/SPREADSHEET_ID/ed
 A sample is located [here](https://docs.google.com/spreadsheets/d/1tRVtJX-2Bsn7vXIexK3Dtop5ko2BiFF2Hp83wuJrtPI/edit?usp=sharing)
 
 You will need to set your configuration options using the the above details.
+
