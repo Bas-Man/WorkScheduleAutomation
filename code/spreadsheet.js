@@ -9,13 +9,15 @@ function saveDataToSheet(ss, schedule) {
   
   var sheet = ss.getSheetByName(sheetName);
   
+  // Set up the column correctly for the pay period
   var startColumn = getColumnIndex(months, schedule.month, schedule.date);
   var lessonColumn = startColumn;
   var bonusColumn = startColumn + 1;
   var travelColumn = bonusColumn + 1;
   var restDayColumn = travelColumn + 1;
   var pvColumn = restDayColumn + 1;
-    
+  
+  // Update the cells with the values head in the schedule object.
   sheet.getRange(getRow(schedule.date), lessonColumn).setValue(schedule.lessons);
   sheet.getRange(getRow(schedule.date), bonusColumn).setValue(schedule.bonuses);
   sheet.getRange(getRow(schedule.date), travelColumn).setValue(schedule.travels);
@@ -39,9 +41,10 @@ function openSpreadSheet() {
 // Determine which row this date data will be inserted into.
 function getRow(dateStr) {
   
+  var date;
   // Convert string to int
   if (typeof(dateStr) === "string"){
-  var date = parseInt(dateStr);
+    date = parseInt(dateStr);
   } else {
     date = dateStr;
   }
