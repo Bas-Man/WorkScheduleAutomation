@@ -3,3 +3,4 @@ const calendarID = "Provide your calendar ID here";
 const restDay = "Specify your work rest day, Sunday Monday. Only list one day.";
 const filter = "Provide your Gmail search filter Rules here";
 const baseLC = "Put your LC name here";
+const writeSpreadSheet = true or false
