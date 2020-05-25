@@ -1,0 +1,6 @@
+const spreadSheetID = "YOUR_SPREADSHEET_ID_HERE";
+const calendarID = "YOUR_CALENDAR_ID_HERE";
+const restDay = "Sunday"; // Set your Rest day here
+const filter = "newer_than:1d AND label:Berlitz/Schedule AND -label:ProcessedSchedule";
+const updatedFilter = "newer_than:1d and label:Berlitz/Schedule AND label:ProcessedSchedule";
+const baseLC = "Akasaka"; // Set your Base LC here
