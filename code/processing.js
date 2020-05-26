@@ -13,8 +13,9 @@ function NightlyProcessing() {
 
 function processMessages(messages) {
 
+  let ss;
   if (writeSpreadSheet) {
-    const ss = openSpreadSheet();
+    ss = openSpreadSheet();
     if(ss == -1) {
       Logger.log("Unable to open Spreadsheet\nExiting Script\n");
       return ss;
