@@ -4,7 +4,8 @@ Automate calendar, spreadsheet updating based on email sent from work
 ## Setup
 
 ### Options:
-  1. Copy the code from the files directly and save in files with .gs extention in [Google Script](script.google.com)
+  1. Copy the code from the files directly and save in files with .gs extention in [Google Script](https://script.google.com)
+
     1. Login and create a new Project.
     2. Create and copy files. File names really don't matter. But best to be organised.
     3. Setup the configuration.gs file to match your needs.
