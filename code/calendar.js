@@ -7,11 +7,11 @@ function setDateObject(date, month, year, time) {
 function lookupLocation(location){
   // This function takes the short LC name and looks up the full name which is used in
   // Google Maps and hopefully Apple Maps Allowing for calendar apps to provide map directions
-  if(!locations[location]) 
+  if(!locations[location])
     location = "";
   else
     location = locations[location];
-  return location;  
+  return location;
 }
 
 // Create an options object to pass to createEvent
@@ -28,7 +28,7 @@ function createDetails(unit){
   }
   // Log this if this is a zoom unit {True/False}
   console.log("unit.zoom: " + unit.zoom)
-  
+
   // Append Zoom information if zoom is true
   if(unit.zoom) {
     details.description += "\nThis is a Zoom lesson\n";
@@ -36,12 +36,12 @@ function createDetails(unit){
   if(unit.location) {
     details.location = lookupLocation(unit.location);
   }
-  return details;  
+  return details;
 }
 
 // Add a single event to the calendar
 function addUnitToCalendar(calendar, date, month, year, unit) {
- 
+
   if((unit.type === "Vacation") ||
      ((unit.type === "Blocked") && (!unit.comment.includes("onus")))) {
     } else {
@@ -67,7 +67,7 @@ function openCalendar() {
 
   // Gets the public calendar named "BerlitzWork" using its ID.
   const calendar = CalendarApp.getCalendarById(calendarID);
-  
+
   if (calendar == null) {
     Logger.log("Unable to find BerlitzWork Calendar");
     return -1;
@@ -80,25 +80,26 @@ function openCalendar() {
 // call addUnitToCalendar for each unit
 function addUnitsToCalendar(calendar, schedule) {
 
+  // Remove and previously created calendar Events to prevent duplication.
   deleteExistingEvents(calendar, schedule);
-  
+
   var i = 0;
   while(i < schedule.units.length) {
     addUnitToCalendar(calendar, schedule.date, schedule.month,
                      schedule.year, schedule.units[i]);
-    i++;  
+    i++;
   }
 }
 
 // To avoid duplicate calendar entries when the schedule has been resent.
 // Delete existing entries if they exist.
 function deleteExistingEvents(calendar, schedule){
-  
+
   var events = calendar.getEventsForDay(setDateObject(schedule.date, schedule.month, schedule.year,"00:00"));
   if (events.length > 0) {
     Logger.log("Deleting all events for " + schedule.date + " the " + schedule.month + ", " + schedule.year);
     for (var i in events) {
       events[i].deleteEvent();
     }
-  }  
+  }
 }
