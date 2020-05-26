@@ -3,10 +3,10 @@
 
 // Get email date information and initialize object
 function newSchedule(subject) {
-  
-  Logger.log("Creating mySchedude Object and matching Date information");
+
+  Logger.log("Creating Schedule Object and matching Date information");
   const match = subject.match(date_regex);
-  
+
   if (match.length < 4) {
     Logger.log("Unable to match Date information for Schedule");
     Logger.log("Subject: " + subject);
@@ -18,11 +18,12 @@ function newSchedule(subject) {
     schedule.date = match.groups.date;
     schedule.year = match.groups.year;
   }
-  Logger.log("Completed newSchedule");
+  Logger.log("Completed Schedule");
   return schedule;
 }
 
 function createScheduleObject() {
+  // Initialize new schedule object. Setting default values.
 
   Logger.log("Creating Schedule Object");
   var schedule = {};
@@ -38,16 +39,16 @@ function createScheduleObject() {
     } else {
       return false;
     }
-  } // end isRestDay  
+  } // end isRestDay
   return schedule;
 }
 
 // Check if I have work on this day or not.
 function lessonsScheduledToday(text) {
-    
+
   const regex = /There is no work scheduled/i;
-  
-  Logger.log("Checking if there are lessons in email");  
+
+  Logger.log("Checking if there are lessons in email");
   match = text.match(regex);
   if(!match) {
     Logger.log("Units found. Will process email");
@@ -63,7 +64,7 @@ function lessonsScheduledToday(text) {
 function matchTravelBlock(text) {
 
   Logger.log("Matching Travels, Methods and Blocked Units");
-  let units = new Array(); 
+  let units = new Array();
   const matches = text.matchAll(trvl_blk_regex);
 
   for(const match of matches) {
@@ -75,7 +76,7 @@ function matchTravelBlock(text) {
     unit.class = match.groups.class || '';
     unit.type = match.groups.type;
     unit.comment = match.groups.comment || '';
-    units.push(unit);    
+    units.push(unit);
   }
   Logger.log("Matched " + units.length + " unique entries");
   return units;
@@ -83,7 +84,7 @@ function matchTravelBlock(text) {
 
 // Get lessons from email text
 function matchLessons(text) {
-  
+
   Logger.log("Starting matchLessons");
   let units = new Array();
   const matches = text.matchAll(lessons_pv_regex);
@@ -110,5 +111,3 @@ function matchLessons(text) {
   Logger.log("Completed matchLessons");
   return units;
 }
-
-
