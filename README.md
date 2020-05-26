@@ -38,7 +38,7 @@ You will need to set your configuration options using the the above details.
 <a name="trigger"></a>Set up a trigger
 In order for this to be automated. You need to set up a tigger that runs by itself.
 
-1. Open your project and select 'Edit' -> 'Current Project Triggers' ![TriggerStepOne](./Resources/TriggerstepOne.png)
+1. Open your project and select 'Edit' -> 'Current Project Triggers' ![TriggerStepOne](./Resources/TriggerStepOne.png)
 2. Click on the 'Add Trigger' Its a nice large blue Button, probably in the lower right corner.
 ![TriggerStepTwo](./Resources/TriggerStepTwo.png)
 3. 'Select type of time based trigger' Set this to 'Day timer' ![TriggerStepThreeA](./Resources/TriggerStepThree.png) After ![TriggerStepThreeB](./Resources/TriggerStepThreeB.png)
