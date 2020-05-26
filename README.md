@@ -47,9 +47,9 @@ In order for this to be automated. You need to set up a tigger that runs by itse
 
 ![TriggerStepTwo](./Resources/TriggerStepTwo.png)
 
-3. 'Select type of time based trigger' Set this to 'Day timer'
+3. 'Select type of time based trigger' Set this to 'Day timer' I have mine set to sometime after 7pm.
 
-![TriggerStepThreeA](./Resources/TriggerStepThree.png) After ![TriggerStepThreeB](./Resources/TriggerStepThreeB.png)
+![TriggerStepThreeB](./Resources/TriggerStepThreeB.png)
 
 4. Select the time window for execution. 'Select time of day'
 
