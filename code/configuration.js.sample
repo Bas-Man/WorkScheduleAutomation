@@ -4,4 +4,4 @@ const restDay = "Sunday"; // Set your Rest day here
 const filter = "newer_than:1d AND label:Berlitz/Schedule AND -label:ProcessedSchedule";
 const updatedFilter = "newer_than:1d and label:Berlitz/Schedule AND label:ProcessedSchedule";
 const baseLC = "Akasaka"; // Set your Base LC here
-const writeSpreadSheet = true or false
+const writeSpreadSheet = true or false // Set false if you are not writing a spreadsheet.
