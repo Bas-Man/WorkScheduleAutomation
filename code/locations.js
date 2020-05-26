@@ -1,7 +1,10 @@
 const locations = {
+  "Akabane":"Berlitz Akabane Language Center",
   "Akasaka":"Berlitz Akasaka Language Center",
+  "Atsugi":"Berlitz Atsugi Language Center",
   "Chiba":"Berlitz Chiba Language Center",
   "Chofu":"Berlitz Chofu Language Center",
+  "Fujisawa":"Berlitz Fujisawa Language Center",
   "Hamamatsucho":"Berlitz Hamamatsucho Language Center",
   "Ichigaya":"Berlitz Ichigaya Language Center",
   "Ichikawa":"Berlitz Ichikawa Language Center",
@@ -13,6 +16,7 @@ const locations = {
   "Meguro":"Berlitz Meguro Language Center",
   "Mizonokuchi":"Berlitz Mizonokuchi Language Center",
   "Naka-Meguro":"Berlitz Naka-Meguro Language Center",
+  "Nerima":"Berlitz Nerima Language Center",
   "Nihonbashi":"Berlitz Nihonbashi Language Center",
   "Ochanomizu":"Berlitz Ochanomizu Language Center",
   "Omiya":"Berlitz Omiya Language Center",
