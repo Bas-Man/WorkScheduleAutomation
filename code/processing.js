@@ -3,7 +3,7 @@ function NightlyProcessing() {
   // Main function for processing nightly.
   var status = 0;
   Logger.log("Starting Processing of Schedule Emails");
-  const messages = getRelevantMessages();
+  const messages = getRelevantMessages(nightlyFilter);
   // A check to see if message is empty could be used to exist this function earlier.
   Logger.log("Retrieved relevant messages");
   status = processMessages(messages);
