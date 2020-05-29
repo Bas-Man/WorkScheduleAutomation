@@ -1,17 +1,21 @@
 # WorkScheduleAutomation
 Automate calendar, spreadsheet updating based on email sent from work
 
-## Setup
+## Index:
+- [Setup](#setup)
+- [Known Issues](#known-issues)
+
+## <a name="setup"></a>Setup
 
 ### Options:
-  1. Copy the code from the files directly and save in files with .gs extention in [Google Script](https://script.google.com)
+1. Copy the code from the files directly and save in files with .gs extention in [Google Script](https://script.google.com)
 
-    1. Login and create a new Project.
-    2. Create and copy files. File names really don't matter. But best to be organised.
-    3. Setup the configuration.gs file to match your needs.
-    4. Setup a daily trigger to run some time after the schedule has been posted. [Here](#trigger)
+  1. Login and create a new Project.
+  2. Create and copy files. File names really don't matter. But best to be organised.
+  3. Setup the configuration.gs file to match your needs.
+  4. Setup a daily trigger to run some time after the schedule has been posted. [Here](#trigger)
 
-  2. Clone this repo and then use 'clasp' to push the code to GoogleScript. See [Video Here](https://www.youtube.com/watch?v=V_7kvwcZf_c)
+2. Clone this repo and then use 'clasp' to push the code to GoogleScript. See [Video Here](https://www.youtube.com/watch?v=V_7kvwcZf_c)
 
 ### Things you need to do:
 
@@ -55,3 +59,9 @@ In order for this to be automated. You need to set up a tigger that runs by itse
 4. Select the time window for execution. 'Select time of day'
 
 ![TriggerStepFour](./Resources/TriggerStepFour.png)
+
+### <a name="known-issues"></a>Known Issues:
+1. If there is more than a single message in a thread. The last message may not be processed. Resulting in the calendar and spreadsheet not being correct.
+2. If the schedule is updated the next day. You will need to manually process the email. To do this.
+  1. Log in to gmail and remove the "Processed"  label from thread.
+  2. Switch to google script. Manaully run the nightlyProcess function.
