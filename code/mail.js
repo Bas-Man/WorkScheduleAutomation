@@ -1,7 +1,7 @@
 
 // Mail functions
 
-function getRelevantMessages()
+function getRelevantMessages(filter)
 {
   Logger.log("Getting Schedule Emails to be processed");
   var threads = GmailApp.search(filter);
