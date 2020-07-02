@@ -1,6 +1,8 @@
 # WorkScheduleAutomation
-Automate calendar, spreadsheet updating based on email sent from work
 
+Automate calendar, spreadsheet updating based on email sent from work.
+
+![GitHub](https://img.shields.io/github/license/Bas-Man/WorkScheduleAutomation)
 ## Index:
 - [Setup](#setup)
 - [Known Issues](#known-issues)
