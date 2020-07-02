@@ -20,12 +20,18 @@ function createDetails(unit){
 
   details = {};
   details.description = unit.type;
+  if((unit.material) && (showMaterial)) {
+    var descMaterial = "\n" + unit.material + "\n";
+    details.description += descMaterial;
+  }
+  
   // If there is a comment add this to description
   if((unit.comment) &&
      (unit.type !== "Travel")){
-     var descAmmendment = "\n" + unit.comment + "\n";
-     details.description += descAmmendment;
+     var descComment = "\n" + unit.comment;
+     details.description += descComment;
   }
+  
   // Log this if this is a zoom unit {True/False}
   console.log("unit.zoom: " + unit.zoom)
 
