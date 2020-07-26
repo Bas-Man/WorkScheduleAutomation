@@ -11,6 +11,18 @@ function NightlyProcessing() {
   Logger.log("Processing Completed.");
 }
 
+function doProcessing(filter) {
+  // Main function for processing nightly.
+  var status = 0;
+  Logger.log("Starting Processing of Schedule Emails");
+  const messages = getRelevantMessages(filter);
+  // A check to see if message is empty could be used to exist this function earlier.
+  Logger.log("Retrieved relevant messages");
+  status = processMessages(messages);
+  // status is currently unused. Could be used to send email notification in the future.
+  Logger.log("Processing Completed.");
+}
+
 function processMessages(messages) {
 
   let ss;
