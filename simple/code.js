@@ -4,6 +4,15 @@ function doGet() {
   
 }
 
+// Updated schedule and calendar if there has been an updated schedule sent.
+function updateSchedule() {
+  doProcessing(updatedFilter);
+}
+
+// Run nightly processing after initial nightly schedule has been sent out.
+function doNightly() {
+  doProcessing(nightlyFilter);
+}
 // Mail functions
 
 function getRelevantMessages(filter)
@@ -43,6 +52,18 @@ function NightlyProcessing() {
   var status = 0;
   Logger.log("Starting Processing of Schedule Emails");
   const messages = getRelevantMessages(nightlyFilter);
+  // A check to see if message is empty could be used to exist this function earlier.
+  Logger.log("Retrieved relevant messages");
+  status = processMessages(messages);
+  // status is currently unused. Could be used to send email notification in the future.
+  Logger.log("Processing Completed.");
+}
+
+function doProcessing(filter) {
+  // Main function for processing nightly.
+  var status = 0;
+  Logger.log("Starting Processing of Schedule Emails");
+  const messages = getRelevantMessages(filter);
   // A check to see if message is empty could be used to exist this function earlier.
   Logger.log("Retrieved relevant messages");
   status = processMessages(messages);
