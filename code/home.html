@@ -20,21 +20,21 @@
       <button id="nightlyBtn" class="waves-effect waves-light btn-small blue darken-1">Nightly Schedule</button>
     </div>
     <div class="form-row">    
-      <button id="scheduleUpdateBtn" class="waves-effect waves-light btn-small blue darken-1">Updated Schedule</button>
+      <button id="updateBtn" class="waves-effect waves-light btn-small blue darken-1">Updated Schedule</button>
     </div>
   </center>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
-    document.getElementById("nightlyBtn").addEventListener("click",nightlySchedule);
-      docament.getElementById("scheduleUpdateBtn").addEventListener("click",scheduleUpdate);
+      document.getElementById("nightlyBtn").addEventListener("click",nightlySchedule);
+      document.getElementById("updateBtn").addEventListener("click",scheduleUpdate);
       
       function nightlySchedule() {
-        google.script.run.NightlyProcessing();
-      }
+        google.script.run.doNightly();
+      };
       
       function scheduleUpdate() {
-        google.script.run.bogus();
-      }
+        google.script.run.updateSchedule();
+      };
     </script>
     
   </body>
