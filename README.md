@@ -25,15 +25,15 @@ You will need to create or use an existing calendar. Determine its ID. You can g
 
 1. Navigate to Calendar and click on the three vertical dots
 
-![Options for ..](./Resources/ScreenOne.png)
+![Options for ..](../media/Resources/ScreenOne.png?raw=true)
 
 2. Select "Settings and Sharing"
 
-![Settings and Sharing](./Resources/ScreenTwo.png)
+![Settings and Sharing](../media/Resources/ScreenTwo.png?raw=true)
 
 3. Below Integrate Calendar
 
-![See ID below Integrate Calendar](./Resources/ScreenThree.png)
+![See ID below Integrate Calendar](../media/Resources/ScreenThree.png?raw=true)
 
 You will need to create a spreadsheet in your google drive and get its ID
 The ID can be found in the spreadsheet's url located between d/SPREADSHEET_ID/edit#gid=0
@@ -48,19 +48,19 @@ In order for this to be automated. You need to set up a tigger that runs by itse
 
 1. Open your project and select 'Edit' -> 'Current Project Triggers'
 
-![TriggerStepOne](./Resources/TriggerStepOne.png)
+![TriggerStepOne](../media/Resources/TriggerStepOne.png?raw=true)
 
 2. Click on the 'Add Trigger' Its a nice large blue Button, probably in the lower right corner.
 
-![TriggerStepTwo](./Resources/TriggerStepTwo.png)
+![TriggerStepTwo](../media/Resources/TriggerStepTwo.png?raw=true)
 
 3. 'Select type of time based trigger' Set this to 'Day timer' I have mine set to sometime after 7pm.
 
-![TriggerStepThreeB](./Resources/TriggerStepThreeB.png)
+![TriggerStepThreeB](../media/Resources/TriggerStepThreeB.png?raw=true)
 
 4. Select the time window for execution. 'Select time of day'
 
-![TriggerStepFour](./Resources/TriggerStepFour.png)
+![TriggerStepFour](../media/Resources/TriggerStepFour.png?raw=true)
 
 ### <a name="known-issues"></a>Known Issues:
 1. If there is more than a single message in a thread. The last message may not be processed. Resulting in the calendar and spreadsheet not being correct.
