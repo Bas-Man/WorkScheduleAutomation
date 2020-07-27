@@ -13,6 +13,8 @@ Automate calendar, spreadsheet updating based on email sent from work.
 
 ### Options:
 There are two ways about setting this system.
+
+Option 1:
 1. Copy the code from the files directly and save in files with .gs extention in [Google Script](https://script.google.com)
 
   1. Login and create a new Project.
@@ -47,7 +49,9 @@ There are two ways about setting this system.
   ```
   4. *(Optional)* Setup a daily trigger to run some time after the schedule has been posted. See instructions [Here](#trigger)
 
-2. Clone this repo and then use 'clasp' to push the code to GoogleScript. See [Video Here](https://www.youtube.com/watch?v=V_7kvwcZf_c)
+Option 2:
+
+ Clone this repo and then use 'clasp' to push the code to GoogleScript. See [Video Here](https://www.youtube.com/watch?v=V_7kvwcZf_c)
 
 ### Things you need to do:
 
