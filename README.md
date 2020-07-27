@@ -3,7 +3,7 @@
 Automate calendar, spreadsheet updating based on email sent from work.
 
 **Warning:** This is not a replacement for reading your work email. You are still responsible for checking your email and knowing your schedule.
-**This is merely an aide.**
+**This is merely an aid.**
 
 ## Index:
 - [Setup](#setup)
