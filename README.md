@@ -12,12 +12,40 @@ Automate calendar, spreadsheet updating based on email sent from work.
 ## <a name="setup"></a>Setup
 
 ### Options:
+There are two ways about setting this system.
 1. Copy the code from the files directly and save in files with .gs extention in [Google Script](https://script.google.com)
 
   1. Login and create a new Project.
-  2. Create and copy files. File names really don't matter. But best to be organised.
-  3. Setup the configuration.gs file to match your needs.
-  4. Setup a daily trigger to run some time after the schedule has been posted. [Here](#trigger)
+  2. Create and copy files.\
+    From the folder called `simple` copy the files as named. Remember to renamed `configuration.js.sample` to `configuration.gs`\
+     Note: the extension will be changed from .js to .gs in Google.
+  3. Setup the configuration.gs file to match your needs. \
+  Note: You can use your gmail address for the calendarID if you want to use your primary calendar. \
+  Sample: Without Spreadsheet.
+  ```js
+  const spreadSheetID = "";
+  const calendarID = "YOUR_ID@group.calendar.google.com";
+  const restDay = "Monday"; // Set your Rest day here
+  const nightlyFilter = "newer_than:1d AND label:Berlitz/Schedule AND -label:ProcessedSchedule";
+  const updatedFilter = "newer_than:1d AND label:Berlitz/Schedule AND label:ProcessedSchedule";
+  // Check locations.js for valid LC names.
+  const baseLC = "Akasaka"; // Set your Base LC here
+  const writeSpreadSheet = false;
+  const showMaterial = true;
+  ```
+  Sample: With Spreadsheet.
+  ```js
+  const spreadSheetID = "YOUR_SPREADSHEET_ID";
+  const calendarID = "YOUR_ID@group.calendar.google.com";
+  const restDay = "Monday"; // Set your Rest day here
+  const nightlyFilter = "newer_than:1d AND label:Berlitz/Schedule AND -label:ProcessedSchedule";
+  const updatedFilter = "newer_than:1d AND label:Berlitz/Schedule AND label:ProcessedSchedule";
+  // Check locations.js for valid LC names.
+  const baseLC = "Akasaka"; // Set your Base LC here
+  const writeSpreadSheet = true;
+  const showMaterial = true;
+  ```
+  4. *(Optional)* Setup a daily trigger to run some time after the schedule has been posted. See instructions [Here](#trigger)
 
 2. Clone this repo and then use 'clasp' to push the code to GoogleScript. See [Video Here](https://www.youtube.com/watch?v=V_7kvwcZf_c)
 
@@ -43,6 +71,8 @@ The ID can be found in the spreadsheet's url located between d/SPREADSHEET_ID/ed
 A sample is located [here](https://docs.google.com/spreadsheets/d/1tRVtJX-2Bsn7vXIexK3Dtop5ko2BiFF2Hp83wuJrtPI/edit?usp=sharing)
 
 You will need to set your configuration options using the the above details.
+
+*(This step is optional)*
 
 <a name="trigger"></a>Set up a trigger
 
