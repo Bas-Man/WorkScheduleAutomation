@@ -6,21 +6,38 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <style>
-      .form-row {
+       .form-row {
         margin-bottom:15px;
-      }
+        }
+       /* Extra small devices (phones, 600px and down) */
+       @media only screen and (max-width: 600px) {
+       }
+       /* Small devices (portrait tablets and large phones, 600px and up) */
+       @media only screen and (min-width: 600px) {
+       .button {
+        font-size: 60px;
+        padding: 60px 70px
+       }
+       }
+       /* Large devices (laptops/desktops, 992px and up) */
+       @media only screen and (min-width: 992px) {
+       .button {
+        font-size: 13px !important;
+        padding: 1px 4px !important;
+       }
+       }
     </style>
   </head>
   <body>
   <center>
-    <div class="form-row">
-      <h3>Nightly Schedule or Updated Schedule</h3>
+    <div class="header">
+      <h3>Process Schedule</h3>
     </div>
     <div class="form-row">
-      <button id="nightlyBtn" class="waves-effect waves-light btn-small blue darken-1">Nightly Schedule</button>
+      <button id="nightlyBtn" class="waves-effect waves-light btn-small blue darken-1 button">Nightly Schedule</button>
     </div>
     <div class="form-row">    
-      <button id="updateBtn" class="waves-effect waves-light btn-small blue darken-1">Updated Schedule</button>
+      <button id="updateBtn" class="waves-effect waves-light btn-small blue darken-1 button">Updated Schedule</button>
     </div>
   </center>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
