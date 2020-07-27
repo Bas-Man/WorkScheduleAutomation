@@ -63,7 +63,7 @@ In order for this to be automated. You need to set up a tigger that runs by itse
 ![TriggerStepFour](../media/Resources/TriggerStepFour.png?raw=true)
 
 ### <a name="known-issues"></a>Known Issues:
-1. If there is more than a single message in a thread. The last message may not be processed. Resulting in the calendar and spreadsheet not being correct.
-2. If the schedule is updated the next day. You will need to manually process the email. To do this.
-  1. Log in to gmail and remove the "Processed"  label from thread.
-  2. Switch to google script. Manaully run the nightlyProcess function.
+~~1. If there is more than a single message in a thread. The last message may not be processed. Resulting in the calendar and spreadsheet not being correct.~~
+~~2. If the schedule is updated the next day. You will need to manually process the email. To do this.~~
+  ~~1. Log in to gmail and remove the "Processed"  label from thread.~~
+  ~~2. Switch to google script. Manaully run the nightlyProcess function.~~
