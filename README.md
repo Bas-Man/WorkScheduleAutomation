@@ -27,7 +27,7 @@ Copy the code from the files directly and save in files with .gs extention in [G
       *It should be noted that I am using labels in this configuration. You should be filtering your email and applying a label to your work schedule email. In this case I have a parent label: `Berlitz` and a sub-label `Schedule`. I will not go into details on how to do this since there is plenty of online guides. But if you need a hint. Your filter might look like this: `from:(advantage-noreply@) to:(your_address@gmail.com) subject:(Schedule for)` and have that filter apply the label you wish to use.*
 
       **Sample: Without Spreadsheet.**
-  ```js
+      ```js
   const spreadSheetID = "";
   const calendarID = "YOUR_ID@group.calendar.google.com";
   const restDay = "Monday"; // Set your Rest day here
