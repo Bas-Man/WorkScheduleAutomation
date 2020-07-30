@@ -28,27 +28,27 @@ Copy the code from the files directly and save in files with .gs extention in [G
 
       **Sample: Without Spreadsheet.**
       ```js
-  const spreadSheetID = "";
-  const calendarID = "YOUR_ID@group.calendar.google.com";
-  const restDay = "Monday"; // Set your Rest day here
-  const nightlyFilter = "newer_than:1d AND label:Berlitz/Schedule AND -label:ProcessedSchedule";
-  const updatedFilter = "newer_than:1d AND label:Berlitz/Schedule AND label:ProcessedSchedule";
-  // Check locations.js for valid LC names.
-  const baseLC = "Akasaka"; // Set your Base LC here
-  const writeSpreadSheet = false;
-  const showMaterial = true;
+      const spreadSheetID = "";
+      const calendarID = "YOUR_ID@group.calendar.google.com";
+      const restDay = "Monday"; // Set your Rest day here
+      const nightlyFilter = "newer_than:1d AND label:Berlitz/Schedule AND -label:ProcessedSchedule";
+      const updatedFilter = "newer_than:1d AND label:Berlitz/Schedule AND label:ProcessedSchedule";
+      // Check locations.js for valid LC names.
+      const baseLC = "Akasaka"; // Set your Base LC here
+      const writeSpreadSheet = false;
+      const showMaterial = true;
       ```
       **Sample: With Spreadsheet.**
       ```js
-  const spreadSheetID = "YOUR_SPREADSHEET_ID";
-  const calendarID = "YOUR_ID@group.calendar.google.com";
-  const restDay = "Monday"; // Set your Rest day here
-  const nightlyFilter = "newer_than:1d AND label:Berlitz/Schedule AND -label:ProcessedSchedule";
-  const updatedFilter = "newer_than:1d AND label:Berlitz/Schedule AND label:ProcessedSchedule";
-  // Check locations.js for valid LC names.
-  const baseLC = "Akasaka"; // Set your Base LC here
-  const writeSpreadSheet = true;
-  const showMaterial = true;
+      const spreadSheetID = "YOUR_SPREADSHEET_ID";
+      const calendarID = "YOUR_ID@group.calendar.google.com";
+      const restDay = "Monday"; // Set your Rest day here
+      const nightlyFilter = "newer_than:1d AND label:Berlitz/Schedule AND -label:ProcessedSchedule";
+      const updatedFilter = "newer_than:1d AND label:Berlitz/Schedule AND label:ProcessedSchedule";
+      // Check locations.js for valid LC names.
+      const baseLC = "Akasaka"; // Set your Base LC here
+      const writeSpreadSheet = true;
+      const showMaterial = true;
       ```
 
 4. *(Optional)* Setup a daily trigger to run some time after the schedule has been posted. See instructions [Here](#trigger)
