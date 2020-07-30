@@ -1,5 +1,3 @@
-TODO:
-=====
-
-- [ ] Improve processing when schedule is resent.
-- [ ] Add HTML interface so that users can save a shortcut to their screen to manually trigger an update.
+- [x] Improve processing when schedule is resent.
+- [x] Add HTML interface so that users can save a shortcut to their screen to manually trigger an update.
+- [ ] Turn off archive by default and make this optional in the configuration. This way the schedule email can be seen in the primary mail folder. Archived after processing if desired.
