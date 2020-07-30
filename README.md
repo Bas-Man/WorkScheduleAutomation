@@ -14,16 +14,17 @@ Automate calendar, spreadsheet updating based on email sent from work.
 ### Options:
 There are two ways about setting this system.
 
-Option 1:
+**Option 1**:
 1. Copy the code from the files directly and save in files with .gs extention in [Google Script](https://script.google.com)
 
-  1. Login and create a new Project.
-  2. Create and copy files.\
+     1. Login and create a new Project.
+     2. Create and copy files.\
     From the folder called `simple` copy the files as named. Remember to renamed `configuration.js.sample` to `configuration.gs`\
      Note: the extension will be changed from .js to .gs in Google.
-  3. Setup the configuration.gs file to match your needs. \
-  Note: You can use your gmail address for the calendarID if you want to use your primary calendar. \
-  Sample: Without Spreadsheet.
+     3. Setup the configuration.gs file to match your needs. \
+  *Note: You can use your gmail address for the calendarID if you want to use your primary calendar.* \
+  *It should be noted that I am using labels in this configuration. You should be filtering your email and applying a label to your work schedule email. In this case I have a parent label: `Berlitz` and a sub-label `Schedule`. I will not go into details on how to do this since there is plenty of online guides. But if you need a hint. Your filter might look like this: `from:(advantage-noreply@) to:(your_address@gmail.com) subject:(Schedule for)` and have that filter apply the label you wish to use.* \
+  **Sample: Without Spreadsheet.**
   ```js
   const spreadSheetID = "";
   const calendarID = "YOUR_ID@group.calendar.google.com";
@@ -35,7 +36,7 @@ Option 1:
   const writeSpreadSheet = false;
   const showMaterial = true;
   ```
-  Sample: With Spreadsheet.
+  **Sample: With Spreadsheet.**
   ```js
   const spreadSheetID = "YOUR_SPREADSHEET_ID";
   const calendarID = "YOUR_ID@group.calendar.google.com";
@@ -47,15 +48,17 @@ Option 1:
   const writeSpreadSheet = true;
   const showMaterial = true;
   ```
-  4. *(Optional)* Setup a daily trigger to run some time after the schedule has been posted. See instructions [Here](#trigger)
+     4. *(Optional)* Setup a daily trigger to run some time after the schedule has been posted. See instructions [Here](#trigger)
 
-Option 2:
+**Option 2**:
 
  Clone this repo and then use 'clasp' to push the code to GoogleScript. See [Video Here](https://www.youtube.com/watch?v=V_7kvwcZf_c)
 
 ### Things you need to do:
 
 You will need to create or use an existing calendar. Determine its ID. You can get the ID by opening your google calendar.
+
+If you want to have a special calendar for Berlitz work schedule follow these steps. After creating the calendar in Google calender.
 
 1. Navigate to Calendar and click on the three vertical dots
 
@@ -67,12 +70,13 @@ You will need to create or use an existing calendar. Determine its ID. You can g
 
 3. Below Integrate Calendar
 
-![See ID below Integrate Calendar](../media/Resources/ScreenThree.png?raw=true)
+![See ID below Integrate Calendar](../media/Resources/ScreenThree.png?raw=true) \
+The ID will be just blow this text.
 
 You will need to create a spreadsheet in your google drive and get its ID
 The ID can be found in the spreadsheet's url located between d/SPREADSHEET_ID/edit#gid=0
 
-A sample is located [here](https://docs.google.com/spreadsheets/d/1tRVtJX-2Bsn7vXIexK3Dtop5ko2BiFF2Hp83wuJrtPI/edit?usp=sharing)
+A sample spreadsheet is located [here](https://docs.google.com/spreadsheets/d/1tRVtJX-2Bsn7vXIexK3Dtop5ko2BiFF2Hp83wuJrtPI/edit?usp=sharing)
 
 You will need to set your configuration options using the the above details.
 
@@ -103,3 +107,4 @@ In order for this to be automated. You need to set up a tigger that runs by itse
 ~~2. If the schedule is updated the next day. You will need to manually process the email. To do this.~~
   ~~1. Log in to gmail and remove the "Processed"  label from thread.~~
   ~~2. Switch to google script. Manaully run the nightlyProcess function.~~
+3. Berlitz has not created all the required Google Maps entries for all Language Centres, more over, there are barely any locations in Apple Maps. This means that the maps location may not be available. If you find an LC that does have a Google maps location but no entry in the locations.gs file. Please let me know.
