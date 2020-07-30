@@ -110,4 +110,4 @@ In order for this to be automated. You need to set up a tigger that runs by itse
 ~~2. If the schedule is updated the next day. You will need to manually process the email. To do this.~~
   ~~1. Log in to gmail and remove the "Processed"  label from thread.~~
   ~~2. Switch to google script. Manaully run the nightlyProcess function.~~
- 3. Berlitz has not created all the required Google Maps entries for all Language Centres, more over, there are barely any locations in Apple Maps. This means that the maps location may not be available. If you find an LC that does have a Google maps location but no entry in the locations.gs file. Please let me know.
+3. Berlitz has not created all the required Google Maps entries for all Language Centres, more over, there are barely any locations in Apple Maps. This means that the maps location may not be available. If you find an LC that does have a Google maps location but no entry in the locations.gs file. Please let me know.
