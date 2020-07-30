@@ -15,17 +15,18 @@ Automate calendar, spreadsheet updating based on email sent from work.
 There are two ways about setting this system.
 
 **Option 1**:
-1. Copy the code from the files directly and save in files with .gs extention in [Google Script](https://script.google.com)
+
+Copy the code from the files directly and save in files with .gs extention in [Google Script](https://script.google.com)
 
   1. Login and create a new Project.
   2. Create and copy files.\
     From the folder called `simple` copy the files as named. Remember to renamed `configuration.js.sample` to `configuration.gs`\
-     Note: the extension will be changed from .js to .gs in Google.
+    Note: the extension will be changed from .js to .gs in Google.
   3. Setup the configuration.gs file to match your needs. \
-  *Note: You can use your gmail address for the calendarID if you want to use your primary calendar.* \
-  *It should be noted that I am using labels in this configuration. You should be filtering your email and applying a label to your work schedule email. In this case I have a parent label: `Berlitz` and a sub-label `Schedule`. I will not go into details on how to do this since there is plenty of online guides. But if you need a hint. Your filter might look like this: `from:(advantage-noreply@) to:(your_address@gmail.com) subject:(Schedule for)` and have that filter apply the label you wish to use.* \
-  **Sample: Without Spreadsheet.**
-  ```js
+      *Note: You can use your gmail address for the calendarID if you want to use your primary calendar.* \
+      *It should be noted that I am using labels in this configuration. You should be filtering your email and applying a label to your work schedule email. In this case I have a parent label: `Berlitz` and a sub-label `Schedule`. I will not go into details on how to do this since there is plenty of online guides. But if you need a hint. Your filter might look like this: `from:(advantage-noreply@) to:(your_address@gmail.com) subject:(Schedule for)` and have that filter apply the label you wish to use.* \
+      **Sample: Without Spreadsheet.**
+      ```js
   const spreadSheetID = "";
   const calendarID = "YOUR_ID@group.calendar.google.com";
   const restDay = "Monday"; // Set your Rest day here
@@ -35,9 +36,9 @@ There are two ways about setting this system.
   const baseLC = "Akasaka"; // Set your Base LC here
   const writeSpreadSheet = false;
   const showMaterial = true;
-  ```
-  **Sample: With Spreadsheet.**
-  ```js
+      ```
+      **Sample: With Spreadsheet.**
+      ```js
   const spreadSheetID = "YOUR_SPREADSHEET_ID";
   const calendarID = "YOUR_ID@group.calendar.google.com";
   const restDay = "Monday"; // Set your Rest day here
@@ -47,8 +48,9 @@ There are two ways about setting this system.
   const baseLC = "Akasaka"; // Set your Base LC here
   const writeSpreadSheet = true;
   const showMaterial = true;
-  ```
-  4. *(Optional)* Setup a daily trigger to run some time after the schedule has been posted. See instructions [Here](#trigger)
+      ```
+      
+4. *(Optional)* Setup a daily trigger to run some time after the schedule has been posted. See instructions [Here](#trigger)
 
 **Option 2**:
 
