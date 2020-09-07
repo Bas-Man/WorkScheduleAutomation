@@ -6,3 +6,5 @@ const updatedFilter = "newer_than:1d and label:Berlitz/Schedule AND label:Proces
 const baseLC = "Akasaka"; // Set your Base LC here
 const writeSpreadSheet = true or false // Set false if you are not writing a spreadsheet.
 const showMaterial = true or false
+const archive = true or false
+const contractType = "PL" or "FTI"

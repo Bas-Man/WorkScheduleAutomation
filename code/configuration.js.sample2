@@ -5,3 +5,5 @@ const filter = "Provide your Gmail search filter Rules here";
 const baseLC = "Put your LC name here";
 const writeSpreadSheet = true or false // Set to false if you are not using a spreadsheet.
 const showMaterial = true or false
+const archive = true or false
+const contractType = "PL" or "FTI"
