@@ -10,6 +10,7 @@ function getRelevantMessages(filter)
                   {
                     var count = thread.getMessageCount();
                     if(count > 1) {
+                      Logger.log("Found " + count + " messages. Using the last message");
                       // More than one message in the thread, get the last message in the thread
                       messages.push(thread.getMessages()[count - 1]);
                     } else {
@@ -29,6 +30,11 @@ function labelMessageAsDone(message){
   if(!label_obj){
     label_obj = GmailApp.createLabel(label);
   }
-  label_obj.addToThread(message.getThread() );  
+  label_obj.addToThread(message.getThread() ); 
+  
+  // Archive this message if configured
+  if(archive) {
+    message.moveToArchive();
+  }
     
 }
