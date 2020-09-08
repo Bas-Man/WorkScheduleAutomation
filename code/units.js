@@ -5,6 +5,10 @@ function isStandardLesson(lesson_type) {
     return basic_lessons.includes(lesson_type);
 }
 
+function isBonusTimeSlot(time){
+    return pl_bonus_times.includes(time);
+}
+
 function createDefaultUnit() {
   // Create an default Unit with default values
 
@@ -25,25 +29,28 @@ function addUnitsToSchedule(schedule, units) {
 
 // Tally units so they can be inserted into the spreedsheet
 function tallyAndAssignUnits(schedule) {
-  
+
   Logger.log("Starting the tally process");
   for (var i = 0; i < schedule.units.length; i++) {
     // These are normal classes
     if(isStandardLesson(schedule.units[i].type) ||
        (schedule.units[i].type.startsWith("Group")) ||
-       (schedule.units[i].type.startsWith("Placement"))) { 
+       (schedule.units[i].type.startsWith("Placement"))) {
          //Placements are never paid as bonus unless its a mistake
          if (schedule.day === restDay) {
            Logger.log("Updating RestDay Count");
            schedule.restDay += schedule.units[i].count;
-       } else {
+         } else if ((contractType === "PL") && (isBonusTimeSlot(schedule.units[i].startTime))) {
+           // This is bonus time for pl
+           schedule.bonuses += schedule.units[i].count;
+         } else {
            Logger.log("Updating Lessons count");
            schedule.lessons += schedule.units[i].count;
        }
       // The next set are Travel units
     } else if ((schedule.units[i].type === "Travel") ||
                // Sometimes Travel units happen in blocked units. This is bad :(
-               ((schedule.units[i].type === "Blocked") && 
+               ((schedule.units[i].type === "Blocked") &&
                 (schedule.units[i].comment.toLowerCase() === "travel"))) {
       Logger.log("Updating Travel Count");
       schedule.travels += schedule.units[i].count;
@@ -69,21 +76,21 @@ function findFirstUnit(schedule) {
                         // first unit of the day.
   if(schedule.units.length == 0)
     return;
-  
+
   Logger.log("Starting to look for First");
   while(i < schedule.units.length) {
     if((i == 0) && (schedule.units[i].type !== "Blocked")) {
       schedule.units[i].first = true;
       indexOfFirst = i;
       // Note the + before setDateObject this is not a typo. It's is a short cut do not change.
-      schedule.units[i].timeStamp = +setDateObject(schedule.date, 
-                                                    schedule.month, 
-                                                    schedule.year, 
+      schedule.units[i].timeStamp = +setDateObject(schedule.date,
+                                                    schedule.month,
+                                                    schedule.year,
                                                     schedule.units[i].startTime);
     } else {
-      schedule.units[i].timeStamp = +setDateObject(schedule.date, 
-                                                   schedule.month, 
-                                                   schedule.year, 
+      schedule.units[i].timeStamp = +setDateObject(schedule.date,
+                                                   schedule.month,
+                                                   schedule.year,
                                                    schedule.units[i].startTime);
       if(schedule.units[i].timeStamp < schedule.units[indexOfFirst].timeStamp){
         schedule.units[indexOfFirst].first = false;
