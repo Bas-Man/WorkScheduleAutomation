@@ -369,6 +369,7 @@ function createDefaultUnit() {
   var unit = {};
   unit.zoom = false;
   unit.first = false;
+  unit.isBonus = false;
   unit.isFirst = function() {
     return this.first;
   }
@@ -397,6 +398,7 @@ function tallyAndAssignUnits(schedule) {
          } else if ((contractType === "PL") && (isBonusTimeSlot(schedule.units[i].startTime))) {
            // This is bonus time for pl
            schedule.bonuses += schedule.units[i].count;
+           schedule.units[i].isBonus = true;
          } else {
            Logger.log("Updating Lessons count");
            schedule.lessons += schedule.units[i].count;
@@ -412,9 +414,10 @@ function tallyAndAssignUnits(schedule) {
     } else if (schedule.units[i].type.endsWith("onus")) {
       Logger.log("Updating Bonus Count");
       schedule.bonuses += schedule.units[i].count;
+      schedule.units[i].isBonus = true;
     } else if (schedule.units[i].type === "Vacation") {
       // For now set this to a value of 1 I will need to
-      // check how half days aredone
+      // check how half days are done
       schedule.pv += 1;
     }
   }
@@ -477,18 +480,22 @@ function createDetails(unit){
 
   details = {};
   details.description = unit.type;
+  if (unit.isBonus) {
+    var descBonus = " - Bonus";
+    details.description += descBonus;
+  }
   if((unit.material) && (showMaterial)) {
     var descMaterial = "\n" + unit.material + "\n";
     details.description += descMaterial;
   }
-  
+
   // If there is a comment add this to description
   if((unit.comment) &&
      (unit.type !== "Travel")){
      var descComment = "\n" + unit.comment;
      details.description += descComment;
   }
-  
+
   // Log this if this is a zoom unit {True/False}
   console.log("unit.zoom: " + unit.zoom)
 
@@ -522,7 +529,11 @@ function addUnitToCalendar(calendar, date, month, year, unit) {
 
 function makeEventTitle(unit) {
 
-  var title = unit.type + " (" + unit.count + ")";
+  var title = unit.type;
+  if (unit.isBonus) {
+    title += " - Bonus";
+  }
+  title += " (" + unit.count + ")";
   return title;
 }
 
