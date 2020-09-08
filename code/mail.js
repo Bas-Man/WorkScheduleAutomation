@@ -34,7 +34,9 @@ function labelMessageAsDone(message){
   
   // Archive this message if configured
   if(archive) {
-    message.moveToArchive();
+    Logger.log("Archiving message");
+    var moveThread = message.getThread();
+    moveThread.moveToArchive();
   }
     
 }
