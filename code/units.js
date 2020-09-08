@@ -15,6 +15,7 @@ function createDefaultUnit() {
   var unit = {};
   unit.zoom = false;
   unit.first = false;
+  unit.isBonus = false;
   unit.isFirst = function() {
     return this.first;
   }
@@ -43,6 +44,7 @@ function tallyAndAssignUnits(schedule) {
          } else if ((contractType === "PL") && (isBonusTimeSlot(schedule.units[i].startTime))) {
            // This is bonus time for pl
            schedule.bonuses += schedule.units[i].count;
+           schedule.units[i].isBonus = true;
          } else {
            Logger.log("Updating Lessons count");
            schedule.lessons += schedule.units[i].count;
@@ -58,9 +60,10 @@ function tallyAndAssignUnits(schedule) {
     } else if (schedule.units[i].type.endsWith("onus")) {
       Logger.log("Updating Bonus Count");
       schedule.bonuses += schedule.units[i].count;
+      schedule.units[i].isBonus = true;
     } else if (schedule.units[i].type === "Vacation") {
       // For now set this to a value of 1 I will need to
-      // check how half days aredone
+      // check how half days are done
       schedule.pv += 1;
     }
   }

@@ -20,18 +20,22 @@ function createDetails(unit){
 
   details = {};
   details.description = unit.type;
+  if (unit.isBonus) {
+    var descBonus = " - Bonus";
+    details.description += descBonus;
+  }
   if((unit.material) && (showMaterial)) {
     var descMaterial = "\n" + unit.material + "\n";
     details.description += descMaterial;
   }
-  
+
   // If there is a comment add this to description
   if((unit.comment) &&
      (unit.type !== "Travel")){
      var descComment = "\n" + unit.comment;
      details.description += descComment;
   }
-  
+
   // Log this if this is a zoom unit {True/False}
   console.log("unit.zoom: " + unit.zoom)
 
@@ -65,7 +69,11 @@ function addUnitToCalendar(calendar, date, month, year, unit) {
 
 function makeEventTitle(unit) {
 
-  var title = unit.type + " (" + unit.count + ")";
+  var title = unit.type;
+  if (unit.isBonus) {
+    title += " - Bonus";
+  }
+  title += " (" + unit.count + ")";
   return title;
 }
 
