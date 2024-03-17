@@ -1,6 +1,5 @@
 const locations = {
   "Akabane":"Berlitz Akabane Language Center",
-  "Akasaka":"Berlitz Akasaka Language Center",
   "Atsugi":"Berlitz Atsugi Language Center",
   "Chiba":"Berlitz Chiba Language Center",
   "Chofu":"Berlitz Chofu Language Center",
@@ -16,11 +15,10 @@ const locations = {
   "Meguro":"Berlitz Meguro Language Center",
   "Mizonokuchi":"Berlitz Mizonokuchi Language Center",
   "Naka-Meguro":"Berlitz Naka-Meguro Language Center",
+  "Nakameguro":"Berlitz Naka-Meguro Language Center",
   "Nerima":"Berlitz Nerima Language Center",
-  "Nihonbashi":"Berlitz Nihonbashi Language Center",
   "Ochanomizu":"Berlitz Ochanomizu Language Center",
   "Omiya":"Berlitz Omiya Language Center",
-  "Omotesando":"Berlitz Omotesando Language Center",
   "Otemachi":"Berlitz Otemachi Language Center",
   "Roppongi":"Berlitz Roppongi Language Center",
   "Sangenjaya":"Berlitz Sangenjaya Language Centre",
@@ -28,10 +26,10 @@ const locations = {
   "Shin-Yokohama":"Berlitz Shin-Yokohama Language Center",
   "Shin-Yurigaoka":"Berlitz Shin-Yurigaoka Language Center",
   "Shinagawa":"Berlitz Shinagawa Langauge Center",
+  "Shinjuku":"Berlitz Shinjuku Langauge Center",
   "Tachikawa":"Berlitz Tachikawa Language Center",
   "Tama Center":"Berlitz Tama Center Language Center",
   "Tama Plaza":"Berlitz Tama Plaza Language Center",
   "Ueno":"Berlitz Ueno Language Center",
   "Yokohama":"Berlitz Yokohama Language Center",
-  "Yurakucho":"Berlitz Yurakucho Language Center"
 };
