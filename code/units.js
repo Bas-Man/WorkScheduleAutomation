@@ -1,7 +1,7 @@
 function isStandardLesson(lesson_type) {
     // Check if the lesson is a standard lesson. check is the lesson_type is contained in the
     //constant array defined in constants.js
-    // return a booleen
+    // return a boolean
     return basic_lessons.includes(lesson_type);
 }
 
@@ -25,7 +25,7 @@ function createDefaultUnit() {
 // Add units found in email to the schedule Object
 function addUnitsToSchedule(schedule, units) {
   Logger.log("Added units to schedule Object");
-  Array.prototype.push.apply(schedule.units,units);
+  Array.prototype.push.apply(schedule.units, units);
 }
 
 // Tally units so they can be inserted into the spreedsheet
