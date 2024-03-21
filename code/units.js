@@ -1,3 +1,5 @@
+import { basic_lessons, pl_bonus_times } from './constants';
+
 function isStandardLesson(lesson_type) {
     // Check if the lesson is a standard lesson. check is the lesson_type is contained in the
     //constant array defined in constants.js
@@ -104,3 +106,5 @@ function findFirstUnit(schedule) {
   i++;
   }
 }
+
+export { isStandardLesson, isBonusTimeSlot, createDefaultUnit };
