@@ -3,8 +3,9 @@
   "version": "0.4.0",
   "description": "Google script to process work schedule to up GCalendar and Sheets",
   "main": "processMessages.js",
+  "type": "module",
   "scripts": {
-    "test": "jest"
+    "test": "NODE_OPTIONS='--experimental-vm-modules' jest"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,13 @@
   },
   "homepage": "https://github.com/Bas-Man/WorkScheduleAutomation#readme",
   "devDependencies": {
+    "@babel/core": "^7.23.9",
+    "@babel/eslint-parser": "^7.23.9",
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+    "@babel/preset-env": "^7.23.9",
+    "@types/google-apps-script": "^1.0.82",
     "@types/jest": "^29.5.12",
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "pkg.json": "^2.0.8"
   }
 }
