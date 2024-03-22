@@ -5,6 +5,7 @@ SOURCE=$BASEDIR/code
 DEST=$BASEDIR/dist
 
 APPSCRIPT='appsscript.json'
+HTMLHOME='home.html'
 
 # Make dir if it does not exist.
 mkdir -p ${DEST}
@@ -16,6 +17,9 @@ echo "Done."
 
 # Copy AppsScript JSON file
 cp ${BASEDIR}/${APPSCRIPT} ${DEST}
+
+# Copy home.html file
+cp ${SOURCE}/${HTMLHOME} ${DEST}
 
 for FULL_PATH_NAME in $(ls ${SOURCE}/*.js); do
 	FILE=$(basename ${FULL_PATH_NAME})
