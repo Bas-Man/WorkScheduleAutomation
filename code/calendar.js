@@ -9,7 +9,9 @@ function setDateObject(date, month, year, time) {
 function lookupLocation(location) {
   // This function takes the short LC name and looks up the full name which is used in
   // Google Maps and hopefully Apple Maps Allowing for calendar apps to provide map directions
+  // eslint-disable-next-line no-param-reassign
   if (!locations[location]) location = '';
+  // eslint-disable-next-line no-param-reassign
   else location = locations[location];
   return location;
 }
@@ -47,9 +49,19 @@ function createDetails(unit) {
   return details;
 }
 
+function makeEventTitle(unit) {
+  let title = unit.type;
+  if (unit.isBonus) {
+    title += ' - Bonus';
+  }
+  title += ` (${unit.count})`;
+  return title;
+}
+
 // Add a single event to the calendar
 function addUnitToCalendar(calendar, date, month, year, unit) {
   if (unit.type === 'Vacation' || (unit.type === 'Blocked' && !unit.comment.includes('onus'))) {
+    // Blank
   } else {
     const details = createDetails(unit);
     const event = calendar.createEvent(
@@ -65,15 +77,6 @@ function addUnitToCalendar(calendar, date, month, year, unit) {
   }
 }
 
-function makeEventTitle(unit) {
-  let title = unit.type;
-  if (unit.isBonus) {
-    title += ' - Bonus';
-  }
-  title += ` (${unit.count})`;
-  return title;
-}
-
 function openCalendar() {
   // Gets the public calendar named "BerlitzWork" using its ID.
   const calendar = CalendarApp.getCalendarById(calendarID);
@@ -85,6 +88,19 @@ function openCalendar() {
   return calendar;
 }
 
+// To avoid duplicate calendar entries when the schedule has been resent.
+// Delete existing entries if they exist.
+function deleteExistingEvents(calendar, schedule) {
+  const events = calendar.getEventsForDay(setDateObject(schedule.date, schedule.month, schedule.year, '00:00'));
+  if (events.length > 0) {
+    Logger.log(`Deleting all events for ${schedule.date} the ${schedule.month}, ${schedule.year}`);
+    // eslint-disable-next-line no-restricted-syntax, guard-for-in
+    for (const i in events) {
+      events[i].deleteEvent();
+    }
+  }
+}
+
 // Loop through all units for the given schedule
 // call addUnitToCalendar for each unit
 function addUnitsToCalendar(calendar, schedule) {
@@ -94,18 +110,9 @@ function addUnitsToCalendar(calendar, schedule) {
   let i = 0;
   while (i < schedule.units.length) {
     addUnitToCalendar(calendar, schedule.date, schedule.month, schedule.year, schedule.units[i]);
+    // eslint-disable-next-line no-plusplus
     i++;
   }
 }
 
-// To avoid duplicate calendar entries when the schedule has been resent.
-// Delete existing entries if they exist.
-function deleteExistingEvents(calendar, schedule) {
-  const events = calendar.getEventsForDay(setDateObject(schedule.date, schedule.month, schedule.year, '00:00'));
-  if (events.length > 0) {
-    Logger.log(`Deleting all events for ${schedule.date} the ${schedule.month}, ${schedule.year}`);
-    for (const i in events) {
-      events[i].deleteEvent();
-    }
-  }
-}
+export { openCalendar, addUnitsToCalendar };

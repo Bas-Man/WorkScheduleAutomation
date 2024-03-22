@@ -1,3 +1,4 @@
 code/configuration.js
 code/.clasp.json
 node_modules/**
+dist/**

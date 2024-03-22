@@ -15,6 +15,3 @@ function doNightly() {
   doProcessing(nightlyFilter);
 }
 
-global.doGet = doGet;
-global.updateSchedule = updateSchedule;
-global.doNightly = doNightly;

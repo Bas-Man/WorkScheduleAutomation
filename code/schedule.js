@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-syntax */
 import { restDay } from './configuration';
-import { date_regex, trvl_blk_regex, lessons_pv_regex } from './constants';
+import { dateRegex, trvlBlkRegex, lessonsPvRegex } from './constants';
 import { createDefaultUnit } from './units';
 
 function createScheduleObject() {
@@ -14,6 +14,7 @@ function createScheduleObject() {
   schedule.bonuses = 0;
   schedule.restDay = 0;
   schedule.pv = 0;
+  // eslint-disable-next-line func-names
   schedule.isRestDay = function () {
     if (this.day === restDay) {
       return true;
@@ -26,7 +27,7 @@ function createScheduleObject() {
 // Get email date information and initialize object
 function newSchedule(subject) {
   Logger.log('Creating Schedule Object and matching Date information');
-  const match = subject.match(date_regex);
+  const match = subject.match(dateRegex);
 
   if (match.length < 4) {
     Logger.log('Unable to match Date information for Schedule');
@@ -61,7 +62,7 @@ function lessonsScheduledToday(text) {
 function matchTravelBlock(text) {
   Logger.log('Matching Travels, Methods and Blocked Units');
   const units = [];
-  const matches = text.matchAll(trvl_blk_regex);
+  const matches = text.matchAll(trvlBlkRegex);
 
   for (const match of matches) {
     const unit = createDefaultUnit();
@@ -82,7 +83,7 @@ function matchTravelBlock(text) {
 function matchLessons(text) {
   Logger.log('Starting matchLessons');
   const units = [];
-  const matches = text.matchAll(lessons_pv_regex);
+  const matches = text.matchAll(lessonsPvRegex);
   for (const match of matches) {
     Logger.log('Found matches\n');
     const unit = createDefaultUnit();
