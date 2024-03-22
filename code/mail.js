@@ -6,6 +6,7 @@ function getRelevantMessages(filter) {
   Logger.log('Getting Schedule Emails to be processed');
   const threads = GmailApp.search(filter);
   const messages = [];
+  // eslint-disable-next-line func-names
   threads.forEach(function (thread) {
     const count = thread.getMessageCount();
     if (count > 1) {

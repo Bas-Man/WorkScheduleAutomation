@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+BASEDIR=$(pwd)
+SOURCE=$BASEDIR/code
+DEST=$BASEDIR/dist
+
+APPSCRIPT='appsscript.json'
+
+# Make dir if it does not exist.
+mkdir -p ${DEST}
+
+# Clear Distribution Directly for update
+echo "Clearing ${DEST}..."
+rm -v ${DEST}/*
+echo "Done."
+
+# Copy AppsScript JSON file
+cp ${BASEDIR}/${APPSCRIPT} ${DEST}
+
+for FULL_PATH_NAME in $(ls ${SOURCE}/*.js); do
+	FILE=$(basename ${FULL_PATH_NAME})
+	egrep -v '(^i|^\/* eslint-disable)' ${FULL_PATH_NAME} |
+		while read mLine; do
+			echo ${mLine} >>${DEST}/${FILE}
+		done
+
+	# There is an issue with this script. Its adding /Applications/ and other folders. This ia temp fix
+	sed '/^\/Application/d' ${DEST}/${FILE} >/tmp/temp.txt && mv /tmp/temp.txt ${DEST}/${FILE}
+	# Report exports at the end of the file This is used as these may span multiple lines
+	sed '/^export {/,/};/d' ${DEST}/${FILE} >/tmp/temp.txt && mv /tmp/temp.txt ${DEST}/${FILE}
+done
+
+# Fix code formatting after striping import and export statements
+npx prettier ${DEST} --write

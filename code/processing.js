@@ -1,19 +1,22 @@
-import { getRelevantMessages } from './mail';
-import { writeSpreadSheet } from './configuration';
-import { openSpreadSheet } from './spreadsheet';
+import { getRelevantMessages, labelMessageAsDone } from './mail';
+import { writeSpreadSheet, nightlyFilter } from './configuration';
+import { openSpreadSheet, saveDataToSheet } from './spreadsheet';
+import { openCalendar, addUnitsToCalendar } from './calendar';
+import { lessonsScheduledToday, newSchedule, matchTravelBlock, matchLessons } from './schedule';
+import { tallyAndAssignUnits, findFirstUnit, addUnitsToSchedule } from './units';
 
 function processMessages(messages) {
   let ss;
   if (writeSpreadSheet) {
     ss = openSpreadSheet();
-    if (ss == -1) {
+    if (ss === -1) {
       Logger.log('Unable to open Spreadsheet\nExiting Script\n');
       return ss;
     }
   }
 
   const cal = openCalendar();
-  if (cal == -1) {
+  if (cal === -1) {
     Logger.log('Unable to open Calendar\nExiting Script\n');
     return cal;
   }
@@ -21,12 +24,14 @@ function processMessages(messages) {
   // process oldest message to newest
   let message = messages.length;
   while (message > 0) {
+    // eslint-disable-next-line no-plusplus
     --message;
     const subject = messages[message].getSubject();
     const body = messages[message].getPlainBody();
     if (!lessonsScheduledToday(body)) {
       Logger.log(`Email: ${subject}`);
       labelMessageAsDone(messages[message]);
+      // eslint-disable-next-line no-continue
       continue; // Everything is ok. But no messages to process
     } else {
       // Create schedule object
@@ -67,6 +72,7 @@ function NightlyProcessing() {
   const messages = getRelevantMessages(nightlyFilter);
   // A check to see if message is empty could be used to exist this function earlier.
   Logger.log('Retrieved relevant messages');
+  // eslint-disable-next-line no-unused-vars
   status = processMessages(messages);
   // status is currently unused. Could be used to send email notification in the future.
   Logger.log('Processing Completed.');
@@ -79,6 +85,7 @@ function doProcessing(filter) {
   const messages = getRelevantMessages(filter);
   // A check to see if message is empty could be used to exist this function earlier.
   Logger.log('Retrieved relevant messages');
+  // eslint-disable-next-line no-unused-vars
   status = processMessages(messages);
   // status is currently unused. Could be used to send email notification in the future.
   Logger.log('Processing Completed.');

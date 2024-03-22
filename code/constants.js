@@ -13,24 +13,16 @@ const months = {
   December: 57,
 };
 
-const basic_lessons = ['Private', 'Method', 'OutService', 'Office'];
-const pl_bonus_times = ['07:00', '07:45'];
+const basicLessons = ['Private', 'Method', 'OutService', 'Office'];
+const plBonusTimes = ['07:00', '07:45'];
 
 // Regular Expression Patterns
-const trvl_blk_regex =
+const trvlBlkRegex =
   /(?<startTime>\d{2}:\d{2})\s(?:AM|PM)\s-\s(?<endTime>\d{2}:\d{2})\s(?:AM|PM)\s[(](?<count>\d{1,2})\sUnit[s]?[)]\s?\r?\n(?=Type)Type:\s(?<type>\w+)\r?\n(?=Comment)Comments:\s(?<comment>(?:(?![-]{20}).)*)/gi;
-const lessons_pv_regex_nonzoom =
+const lessonsPvRegexNonzoom =
   /(?<startTime>\d{2}:\d{2})\s(?:AM|PM)\s-\s(?<endTime>\d{2}:\d{2})\s(?:AM|PM)\s[(](?<count>\d{1,2})\sUnit[s]?[)]\s?\r?\n(?:(?=Location)Location:\s(?<location>\w+(?:\s?\w+))(?:\s[(]Room\s[N]?\d{1,2}[)])?|(?!Location)(?=Class)Class:\s(?<class>(?:(?!\n).)*))\r?\nType:\s(?<type>(?:(?!\n).)*)\r?\n(?:(?=Material)Material:\s(?<material>(?:(?!\n).)*)\r?\n|(?!Material))(?:(?=Comment)Comments:\s(?<comment>(?:(?!\r?\n).)*(?:\r?\n)?(?:(?!-{20}).)*)|(?!Comments))/gi;
-const lessons_pv_regex =
+const lessonsPvRegex =
   /(?<startTime>\d{2}:\d{2})\s(?:AM|PM)\s-\s(?<endTime>\d{2}:\d{2})\s(?:AM|PM)\s[(](?<count>\d{1,2})\sUnit[s]?[)]\s?\r?\n(?:(?=Location)Location:\s(?<location>\w+(?:\s?\w+))(?:\s[(]Room\s[N]?\d{1,3}[)])?|(?!Location)(?=Class)Class:\s(?<class>(?:(?!\n).)*))\r?\n(?:(?=-- Delivered)-- Delivered via (?<zoom>Zoom) --\r?\n|(?!Delivered))Type:\s(?<type>(?:(?!\n).)*)\r?\n(?:(?=Material)Material:\s(?<material>(?:(?!\n).)*)\r?\n|(?!Material))(?:(?=Comment)Comments:\s(?<comment>(?:(?!\r?\n).)*(?:\r?\n)?(?:(?!-{20}).)*)|(?!Comment))/gi;
-const date_regex = /(?<day>\w+)\s(?<month>\w+)\s(?<date>\d{1,2})(?:st|nd|rd|th),\s(?<year>\d{4})$/im;
+const dateRegex = /(?<day>\w+)\s(?<month>\w+)\s(?<date>\d{1,2})(?:st|nd|rd|th),\s(?<year>\d{4})$/im;
 
-export {
-  months,
-  basic_lessons,
-  pl_bonus_times,
-  trvl_blk_regex,
-  lessons_pv_regex,
-  lessons_pv_regex_nonzoom,
-  date_regex,
-};
+export { months, basicLessons, plBonusTimes, trvlBlkRegex, lessonsPvRegex, lessonsPvRegexNonzoom, dateRegex };
