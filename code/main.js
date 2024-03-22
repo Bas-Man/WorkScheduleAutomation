@@ -1,7 +1,8 @@
+import { doProcessing } from './processing';
+import { updatedFilter, nightlyFilter } from './configuration';
+
 function doGet() {
-  
-  return HtmlService.createHtmlOutputFromFile("home");
-  
+  return HtmlService.createHtmlOutputFromFile('home');
 }
 
 // Updated schedule and calendar if there has been an updated schedule sent.
@@ -13,3 +14,7 @@ function updateSchedule() {
 function doNightly() {
   doProcessing(nightlyFilter);
 }
+
+global.doGet = doGet;
+global.updateSchedule = updateSchedule;
+global.doNightly = doNightly;
