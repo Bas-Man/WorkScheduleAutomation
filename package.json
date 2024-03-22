@@ -2,11 +2,11 @@
   "name": "berlitzschedule",
   "version": "0.4.0",
   "description": "Google script to process work schedule to up GCalendar and Sheets",
-  "main": "processMessages.js",
+  "main": "main.js",
   "scripts": {
     "watch": "webpack --watch",
     "build": "webpack",
-    "format": "prettier --write dist/code.js",
+    "format": "prettier --write dist/",
     "postbuild": "npm run format",
     "upload": "npx clasp push",
     "test": "NODE_OPTIONS='--experimental-vm-modules' jest"
