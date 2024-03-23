@@ -1,5 +1,4 @@
 const locations = {
-  Akabane: 'Berlitz Akabane Language Center',
   Atsugi: 'Berlitz Atsugi Language Center',
   Chiba: 'Berlitz Chiba Language Center',
   Chofu: 'Berlitz Chofu Language Center',
@@ -25,7 +24,7 @@ const locations = {
   Seijo: 'Berlitz Seijo Language Center',
   'Shin-Yokohama': 'Berlitz Shin-Yokohama Language Center',
   'Shin-Yurigaoka': 'Berlitz Shin-Yurigaoka Language Center',
-  Shinagawa: 'Berlitz Shinagawa Langauge Center',
+  Shinagawa: 'Berlitz Shinagawa Language Center',
   Shinjuku: 'Berlitz Shinjuku Langauge Center',
   Tachikawa: 'Berlitz Tachikawa Language Center',
   'Tama Center': 'Berlitz Tama Center Language Center',
@@ -34,4 +33,11 @@ const locations = {
   Yokohama: 'Berlitz Yokohama Language Center',
 };
 
-export { locations };
+function lookupLocation(location) {
+  // This function takes the short LC name and looks up the full name which is used in
+  // Google Maps and hopefully Apple Maps Allowing for calendar apps to provide map directions
+  if (locations[location]) return locations[location];
+  return '';
+}
+
+export { locations, lookupLocation };

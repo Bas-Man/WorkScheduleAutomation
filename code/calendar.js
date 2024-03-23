@@ -1,19 +1,9 @@
 import { showMaterial, calendarID, baseLC } from './configuration';
-import { locations } from './locations';
+import { lookupLocation } from './locations';
 
 // create a valid Date object using information stored in Object schedule
 function setDateObject(date, month, year, time) {
   return new Date(`${month} ${date}, ${year} ${time}`);
-}
-
-function lookupLocation(location) {
-  // This function takes the short LC name and looks up the full name which is used in
-  // Google Maps and hopefully Apple Maps Allowing for calendar apps to provide map directions
-  // eslint-disable-next-line no-param-reassign
-  if (!locations[location]) location = '';
-  // eslint-disable-next-line no-param-reassign
-  else location = locations[location];
-  return location;
 }
 
 // Create an options object to pass to createEvent
