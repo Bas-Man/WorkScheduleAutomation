@@ -15,7 +15,7 @@ const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 
 const getSrcPath = (filePath) => {
-  const src = path.resolve(__dirname, 'code');
+  const src = path.resolve(__dirname, 'src');
   return path.posix.join(src.replace(/\\/g, '/'), filePath);
 };
 
