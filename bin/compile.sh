@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 BASEDIR=$(pwd)
-SOURCE=$BASEDIR/code
+SOURCE=$BASEDIR/src
 DEST=$BASEDIR/dist
 
 APPSCRIPT='appsscript.json'
