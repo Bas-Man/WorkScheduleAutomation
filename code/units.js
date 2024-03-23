@@ -9,7 +9,10 @@ function isStandardLesson(lessonType) {
 }
 
 function isBonusTimeSlot(time) {
-  return plBonusTimes.includes(time);
+  if (contractType === 'PL') {
+    return plBonusTimes.includes(time);
+  }
+  return false;
 }
 
 function createDefaultUnit() {
