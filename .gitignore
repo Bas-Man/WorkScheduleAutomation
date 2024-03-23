@@ -1,4 +1,4 @@
-code/configuration.js
-code/.clasp.json
+src/configuration.js
+src/.clasp.json
 node_modules/**
 dist/**
