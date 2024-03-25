@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
 BASEDIR=$(pwd)
-SOURCE=$BASEDIR/../src/
+SOURCE=$BASEDIR/../dist/
 DEST=$BASEDIR/../simple/
 
-CP_FILES="home.html locations.js configuration.js.sample constants.js"
+CP_FILES="home.html locations.js constants.js"
+CP_SAMPLE_CONFIG="configuration.js.sample"
 CAT_FILES="main.js mail.js processing.js schedule.js spreadsheet.js units.js calendar.js"
 
 #Clear directory
@@ -17,6 +18,8 @@ for f in $CP_FILES; do
 	echo "Copying ${f}"
 	cp $SOURCE/$f $DEST
 done
+# Copy Sample Configuration file
+cp ${BASEDIR}/../src/configuration.js.sample ${DEST}
 
 #concatinate files in to code.js
 echo "creating file code.js from other files"
