@@ -9,7 +9,7 @@
     "format": "prettier --write dist/",
     "postbuild": "npm run format",
     "upload": "npx clasp push",
-    "test": "NODE_OPTIONS='--experimental-vm-modules' jest"
+    "test": "NODE_OPTIONS='--experimental-vm-modules' jest --silent"
   },
   "repository": {
     "type": "git",
