@@ -6,7 +6,7 @@ import { createDefaultUnit } from './units';
 function createScheduleObject() {
   // Initialize new schedule object. Setting default values.
 
-  Logger.log('Creating Schedule Object');
+  console.log('Creating Schedule Object');
   const schedule = {};
   schedule.units = [];
   schedule.lessons = 0;
@@ -26,21 +26,22 @@ function createScheduleObject() {
 
 // Get email date information and initialize object
 function newSchedule(subject) {
-  Logger.log('Creating Schedule Object and matching Date information');
+  console.log('Creating Schedule Object and matching Date information');
   const match = subject.match(dateRegex);
 
   if (match.length < 4) {
-    Logger.log('Unable to match Date information for Schedule');
-    Logger.log(`Subject: ${subject}`);
+    console.log('Unable to match Date information for Schedule');
+    console.log(`Subject: ${subject}`);
     return undefined;
   }
   const schedule = createScheduleObject();
+  // Add additional properties based on email contents
   schedule.day = match.groups.day;
   schedule.month = match.groups.month;
   schedule.date = match.groups.date;
   schedule.year = match.groups.year;
 
-  Logger.log('Completed Schedule');
+  console.log('Completed Schedule');
   return schedule;
 }
 
@@ -48,19 +49,19 @@ function newSchedule(subject) {
 function lessonsScheduledToday(text) {
   const regex = /There is no work scheduled/i;
 
-  Logger.log('Checking if there are lessons in email');
+  console.log('Checking if there are lessons in email');
   const match = text.match(regex);
   if (!match) {
-    Logger.log('Units found. Will process email');
+    console.log('Units found. Will process email');
     return 1; // Did not match text. There must be units to process
   }
-  Logger.log('No work scheduled in this email.');
+  console.log('No work scheduled in this email.');
   return 0; // Matched text. There are not lessons today.
 }
 
 // Get all units for Travels, Methods and blocked times.
 function matchTravelBlock(text) {
-  Logger.log('Matching Travels, Methods and Blocked Units');
+  console.log('Matching Travels, Methods and Blocked Units');
   const units = [];
   const matches = text.matchAll(trvlBlkRegex);
 
@@ -75,17 +76,17 @@ function matchTravelBlock(text) {
     unit.comment = match.groups.comment || '';
     units.push(unit);
   }
-  Logger.log(`Matched ${units.length} unique entries`);
+  console.log(`Matched ${units.length} unique entries`);
   return units;
 }
 
 // Get lessons from email text
 function matchLessons(text) {
-  Logger.log('Starting matchLessons');
+  console.log('Starting matchLessons');
   const units = [];
   const matches = text.matchAll(lessonsPvRegex);
   for (const match of matches) {
-    Logger.log('Found matches\n');
+    console.log('Found matches\n');
     const unit = createDefaultUnit();
     unit.startTime = match.groups.startTime;
     unit.endTime = match.groups.endTime;
@@ -104,7 +105,7 @@ function matchLessons(text) {
     }
     units.push(unit);
   }
-  Logger.log('Completed matchLessons');
+  console.log('Completed matchLessons');
   return units;
 }
 
