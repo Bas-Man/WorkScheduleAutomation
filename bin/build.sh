@@ -28,6 +28,8 @@ for FULL_PATH_NAME in $(ls ${SOURCE}/*.js); do
 			echo ${LINE} >>${DEST}/${FILE}
 		done
 
+	# convert `console` to `Logger`
+	sed 's/console\./Logger\./g' ${DEST}/${FILE} >/tmp/temp.txt && mv /tmp/temp.txt ${DEST}/${FILE}
 	# There is an issue with this script. It's adding /Applications/ and other folders. This ia temp fix
 	# The issue is most like the `/* eslint` where the `/*` is being interpreted
 	sed '/^\/Application/d' ${DEST}/${FILE} >/tmp/temp.txt && mv /tmp/temp.txt ${DEST}/${FILE}
