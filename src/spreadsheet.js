@@ -78,7 +78,7 @@ function saveDataToSheet(ss, schedule) {
   const sheet = ss.getSheetByName(sheetName);
 
   // Set up the column correctly for the pay period
-  const startColumn = getColumnIndex(months, schedule.month, schedule.date);
+  const startColumn = getColumnIndex(schedule.month, schedule.date);
   const lessonColumn = startColumn;
   const bonusColumn = startColumn + 1;
   const travelColumn = bonusColumn + 1;
