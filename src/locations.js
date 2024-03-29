@@ -25,7 +25,7 @@ const locations = {
   'Shin-Yokohama': 'Berlitz Shin-Yokohama Language Center',
   'Shin-Yurigaoka': 'Berlitz Shin-Yurigaoka Language Center',
   Shinagawa: 'Berlitz Shinagawa Language Center',
-  Shinjuku: 'Berlitz Shinjuku Langauge Center',
+  Shinjuku: 'Berlitz Shinjuku Language Center',
   Tachikawa: 'Berlitz Tachikawa Language Center',
   'Tama Center': 'Berlitz Tama Center Language Center',
   'Tama Plaza': 'Berlitz Tama Plaza Language Center',
