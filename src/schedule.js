@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-restricted-syntax */
 import { restDay } from './configuration';
 import { dateRegex, trvlBlkRegex, lessonsPvRegex } from './constants';
